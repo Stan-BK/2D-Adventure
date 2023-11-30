@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private PhysicsCheck isGroundCheck;
     public PhysicsMaterial2D friction;
     public PhysicsMaterial2D noFriction;
+    public CharacterEventSO characterEventSO;
     
     [Header("角色行为属性")]
     public Vector2 inputDirection;
@@ -99,6 +100,8 @@ public class PlayerController : MonoBehaviour
         isSlide = true;
         playerAnimation.PlayerSlide();
         rb.velocity = new Vector2(transform.localScale.x > 0 ? slideForce : -slideForce, 0);
+        
+        characterEventSO.ChangeSlideCD(this);
         
         StartCoroutine(PlayerCanSlide());
     }

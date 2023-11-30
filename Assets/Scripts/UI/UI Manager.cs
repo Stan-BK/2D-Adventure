@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public CharacterEventSO healthEvent;
+    public CharacterEventSO characterEvent;
     public PlayerStateBar playerStateBar;
+    
     private void OnEnable()
     {
-        healthEvent.OnHealthChange += OnHealthChange;
+        characterEvent.OnHealthChange += OnHealthChange;
+        characterEvent.OnSlideCdChange += OnSlideCdChange;
     }
 
     private void OnDisable()
     {
-        healthEvent.OnHealthChange -= OnHealthChange;
+        characterEvent.OnHealthChange -= OnHealthChange;
+        characterEvent.OnSlideCdChange -= OnSlideCdChange;
     }
-    
+
+    private void OnSlideCdChange(PlayerController playerController)
+    {
+        playerStateBar.cdChange(playerController.slideCD);
+    }
+
     private void OnHealthChange(Character character)
     {
         float percentHealth = (float)character.currentHealth / character.maxHealth;
