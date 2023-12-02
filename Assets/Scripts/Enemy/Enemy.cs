@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     public bool FindPlayer()
     {
-        return Physics2D.BoxCast(transform.position + (Vector3)centerOffset, checkSize, 0, transform.localScale, checkDistance, attackLayer);
+        return Physics2D.BoxCast(transform.position + (Vector3)centerOffset, checkSize, 0, new Vector2(transform.localScale.x, 0), checkDistance, attackLayer);
     }
     #endregion
     

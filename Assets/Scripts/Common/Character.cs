@@ -38,6 +38,16 @@ public class Character : MonoBehaviour
         StartCoroutine(TriggerInvulnerable());
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Bounds"))
+        {
+            currentHealth = 0;
+            OnHealthChange?.Invoke(this);
+            OnDie?.Invoke();
+        }
+    }
+    
     IEnumerator TriggerInvulnerable()
     {
         invulnerable = true;
