@@ -47,7 +47,17 @@ public class Character : MonoBehaviour
             OnDie?.Invoke();
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Barrier"))
+        {
+            currentHealth = 0;
+            OnHealthChange?.Invoke(this);
+            OnDie?.Invoke();
+        }
+    }
+
     IEnumerator TriggerInvulnerable()
     {
         invulnerable = true;
