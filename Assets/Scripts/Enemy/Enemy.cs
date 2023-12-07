@@ -6,12 +6,13 @@ using UnityEngine;
 public enum NPCState
 {
     Patrol,
-    Chase
+    Chase,
+    Defend
 }
 
 public class Enemy : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     public PhysicsCheck physicsCheck;
 
     [Header("敌人行为")]
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
     protected BaseState currentState;
     protected BaseState patrolState;
     protected BaseState chaseState;
+    protected BaseState defendState;
     
     #region 生命周期
     // Start is called before the first frame update
@@ -93,8 +95,9 @@ public class Enemy : MonoBehaviour
         {
             NPCState.Patrol => patrolState,
             NPCState.Chase => chaseState,
+            NPCState.Defend => defendState,
             _ => null
-        };
+        }; 
         
         currentState.OnExit();
         currentState = s;

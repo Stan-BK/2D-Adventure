@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoarPatrolState : BaseState
+public class SnailPatrolState : BaseState
 {
-    private BoarController currentEnemy;
+    private SnailController currentEnemy;
     public override void OnEnter(Enemy enemy)
     {
-        currentEnemy = (BoarController)enemy;
+        currentEnemy = (SnailController)enemy;
         currentEnemy.faceDir = enemy.transform.localScale.x;
         currentEnemy.speed = currentEnemy.patrolSpeed;
+        currentEnemy.anim.SetBool("walk", true);
     }
 
     public override void LogicUpdate()
@@ -18,9 +19,7 @@ public class BoarPatrolState : BaseState
         {
             currentEnemy.SwitchState(NPCState.Defend);
         }
-        
-        currentEnemy.changeFaceDirWhenPatroling();
-        
+        currentEnemy.changeFaceDir();
     }
 
     public override void PhysicsUpdate()
@@ -30,6 +29,6 @@ public class BoarPatrolState : BaseState
 
     public override void OnExit()
     {
-        Debug.Log("Boar: exit patrol");
+        Debug.Log("Snail: exit patrol");
     }
 }
