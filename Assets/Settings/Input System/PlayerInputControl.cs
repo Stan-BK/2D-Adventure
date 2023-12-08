@@ -80,6 +80,24 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Earn"",
+                    ""type"": ""Button"",
+                    ""id"": ""48b55c0e-bbcb-44dd-b5c8-cbc4e0d8a9c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b5b1400-b5da-4e3f-946a-ed22fa7a5bf3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +351,28 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb78abfe-83dc-43b3-8a76-0222d2d06f36"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Earn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""212b0f3d-3f7a-4f8c-bead-4c416ef7602d"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -926,6 +966,8 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
+        m_Player_Earn = m_Player.FindAction("Earn", throwIfNotFound: true);
+        m_Player_NextLevel = m_Player.FindAction("NextLevel", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,6 +1047,8 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Sliding;
+    private readonly InputAction m_Player_Earn;
+    private readonly InputAction m_Player_NextLevel;
     public struct PlayerActions
     {
         private @PlayerInputControl m_Wrapper;
@@ -1015,6 +1059,8 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
+        public InputAction @Earn => m_Wrapper.m_Player_Earn;
+        public InputAction @NextLevel => m_Wrapper.m_Player_NextLevel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1042,6 +1088,12 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Sliding.started += instance.OnSliding;
             @Sliding.performed += instance.OnSliding;
             @Sliding.canceled += instance.OnSliding;
+            @Earn.started += instance.OnEarn;
+            @Earn.performed += instance.OnEarn;
+            @Earn.canceled += instance.OnEarn;
+            @NextLevel.started += instance.OnNextLevel;
+            @NextLevel.performed += instance.OnNextLevel;
+            @NextLevel.canceled += instance.OnNextLevel;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1064,6 +1116,12 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Sliding.started -= instance.OnSliding;
             @Sliding.performed -= instance.OnSliding;
             @Sliding.canceled -= instance.OnSliding;
+            @Earn.started -= instance.OnEarn;
+            @Earn.performed -= instance.OnEarn;
+            @Earn.canceled -= instance.OnEarn;
+            @NextLevel.started -= instance.OnNextLevel;
+            @NextLevel.performed -= instance.OnNextLevel;
+            @NextLevel.canceled -= instance.OnNextLevel;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1252,6 +1310,8 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSliding(InputAction.CallbackContext context);
+        void OnEarn(InputAction.CallbackContext context);
+        void OnNextLevel(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

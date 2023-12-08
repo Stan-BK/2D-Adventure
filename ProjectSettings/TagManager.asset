@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bounds
   - Barrier
+  - Interactive
   layers:
   - Default
   - TransparentFX
