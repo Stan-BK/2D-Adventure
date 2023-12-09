@@ -16,7 +16,7 @@ public class BoarPatrolState : BaseState
     {
         if (currentEnemy.FindPlayer())
         {
-            currentEnemy.SwitchState(NPCState.Defend);
+            currentEnemy.SwitchState(NPCState.Chase);
         }
         
         currentEnemy.changeFaceDirWhenPatroling();

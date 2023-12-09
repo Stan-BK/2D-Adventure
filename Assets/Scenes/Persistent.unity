@@ -639,7 +639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328809469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.4, y: -8.059999, z: -10}
+  m_LocalPosition: {x: -6.79, y: 3.16, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1237,7 +1237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.4, y: -8.059999, z: -10}
+  m_LocalPosition: {x: -6.79, y: 3.16, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1499,6 +1499,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1126688343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126688344}
+  - component: {fileID: 1126688345}
+  m_Layer: 0
+  m_Name: Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1126688344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126688343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1987823805}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1126688345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126688343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a8807c006815b4ab894cdf299d411f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
+  firstLoadScene: {fileID: 11400000, guid: 685eb5b7ef2751c45987f2d565a19ed4, type: 2}
+  Player: {fileID: 1868554331}
+  fadeDuration: 0
 --- !u!1 &1184723710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2270,7 @@ GameObject:
   - component: {fileID: 1868554339}
   m_Layer: 7
   m_Name: ///Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2287,7 +2335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868554331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.4, y: -10.74, z: 0}
+  m_LocalPosition: {x: -6.79, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2375,7 +2423,7 @@ MonoBehaviour:
   noFriction: {fileID: 6200000, guid: 3f35e066b86be59438b920e8219e0b95, type: 2}
   characterEventSO: {fileID: 11400000, guid: bebfc258cdfeea64cad83d3c65fb6f87, type: 2}
   inputDirection: {x: 0, y: 0}
-  jumpForce: 16
+  jumpForce: 18
   speed: 200
   hurtForce: 2
   slideForce: 12
@@ -2641,6 +2689,7 @@ Transform:
   m_Children:
   - {fileID: 228709394}
   - {fileID: 416500425}
+  - {fileID: 1126688344}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
