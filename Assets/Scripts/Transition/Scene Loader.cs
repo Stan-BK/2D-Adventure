@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public enum SceneType {
     Game,
@@ -16,7 +19,9 @@ public class SceneLoader : MonoBehaviour
     public GameSceneSO firstLoadScene;
     public GameObject Player;
     public float fadeDuration;
-
+    public UnityEvent SetCameraBounds;
+    public FadeControl fadeController;
+    
     private GameSceneSO currentScene;
     private GameSceneSO nextScene;
     private Vector3 posToGo;
@@ -51,6 +56,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (fadeScreen)
         {
+            fadeController.FadeIn();
             yield return new WaitForSeconds(fadeDuration);
         }
 
@@ -61,7 +67,17 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
-        Addressables.LoadSceneAsync(nextScene.sceneReference, LoadSceneMode.Additive);
+        var loadSceneAsync =  Addressables.LoadSceneAsync(nextScene.sceneReference, LoadSceneMode.Additive);
+        loadSceneAsync.Completed += OnLoadSceneCompleted;
+    }
+
+    private void OnLoadSceneCompleted(AsyncOperationHandle<SceneInstance> obj)
+    {
+        if (fadeScreen)
+        {
+            fadeController.FadeOut();
+        }
+        SetCameraBounds?.Invoke();
         Player.transform.position = posToGo;
     }
 }

@@ -16,7 +16,7 @@ public class CameraControl : MonoBehaviour
         GetBoundsForCamera();
     }
 
-    void GetBoundsForCamera()
+    public void GetBoundsForCamera()
     {
         var obj = GameObject.FindGameObjectWithTag("Bounds");
         if (obj == null) return;

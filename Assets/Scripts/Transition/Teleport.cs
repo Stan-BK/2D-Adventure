@@ -22,6 +22,6 @@ public class Teleport : MonoBehaviour, IInteractive
 
     void loadScene()
     {
-        loadSceneSO.RaiseLoadSceneEvent(nextScene, posToGO, false);
+        loadSceneSO.RaiseLoadSceneEvent(nextScene, posToGO, true);
     }
 }
