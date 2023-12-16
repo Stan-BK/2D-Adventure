@@ -647,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterEvent: {fileID: 11400000, guid: bebfc258cdfeea64cad83d3c65fb6f87, type: 2}
   playerStateBar: {fileID: 452886902}
+  loadedSceneSO: {fileID: 11400000, guid: 93239568cad2aac438bacfade5e85a7d, type: 2}
 --- !u!1 &328809469
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328809469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.79, y: 3.16, z: -10}
+  m_LocalPosition: {x: -6.75, y: 3.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1144,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &452886902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,7 +1314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.79, y: 3.16, z: -10}
+  m_LocalPosition: {x: -6.75, y: 3.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1723,7 +1724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
-  firstLoadScene: {fileID: 11400000, guid: 685eb5b7ef2751c45987f2d565a19ed4, type: 2}
+  loadedSceneSO: {fileID: 11400000, guid: 93239568cad2aac438bacfade5e85a7d, type: 2}
+  firstLoadScene: {fileID: 11400000, guid: 4463e54a13d99904a944ca0a3728366d, type: 2}
   Player: {fileID: 1868554331}
   fadeDuration: 1
   SetCameraBounds:
@@ -2544,7 +2546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868554331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.79, y: 0.48, z: 0}
+  m_LocalPosition: {x: -6.75, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2627,6 +2629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f90284f73dab494c94269f80e8039b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
+  loadedSceneSO: {fileID: 11400000, guid: 93239568cad2aac438bacfade5e85a7d, type: 2}
   rb: {fileID: 1868554334}
   friction: {fileID: 6200000, guid: 4a84698433f1b6142baf660fcd611842, type: 2}
   noFriction: {fileID: 6200000, guid: 3f35e066b86be59438b920e8219e0b95, type: 2}

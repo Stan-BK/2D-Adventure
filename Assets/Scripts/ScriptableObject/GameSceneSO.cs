@@ -5,4 +5,5 @@ using UnityEngine.AddressableAssets;
 public class GameSceneSO: ScriptableObject
 {
     public AssetReference sceneReference;
+    public SceneType sceneType;
 }

@@ -16,9 +16,10 @@ public enum SceneType {
 public class SceneLoader : MonoBehaviour
 {
     public LoadSceneSO loadSceneSO;
+    public LoadedSceneSO loadedSceneSO;
     public GameSceneSO firstLoadScene;
     public GameObject Player;
-    public float fadeDuration;
+    public float fadeDuration;  
     public UnityEvent SetCameraBounds;
     public FadeControl fadeController;
     
@@ -79,5 +80,7 @@ public class SceneLoader : MonoBehaviour
         }
         SetCameraBounds?.Invoke();
         Player.transform.position = posToGo;
+        currentScene = nextScene;
+        loadedSceneSO.RaiseLoadedSceneEvent(currentScene);
     }
 }

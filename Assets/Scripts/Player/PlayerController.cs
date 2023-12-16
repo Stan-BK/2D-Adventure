@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public LoadSceneSO loadSceneSO;
+    public LoadedSceneSO loadedSceneSO;
     public PlayerInputControl InputControl;
     public Rigidbody2D rb;
     private PlayerAnimation playerAnimation;
@@ -52,13 +54,27 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         InputControl.Enable();
+        loadSceneSO.OnLoadScene += OnLoadScene;
+        loadedSceneSO.OnLoadedScene += OnLoadedScene;
     }
 
     private void OnDisable()
     {
         InputControl.Disable();
+        loadSceneSO.OnLoadScene -= OnLoadScene;
+        loadedSceneSO.OnLoadedScene -= OnLoadedScene;
     }
-    
+
+    private void OnLoadedScene(GameSceneSO sceneSO)
+    {
+        InputControl.Player.Enable();
+    }
+
+    private void OnLoadScene(GameSceneSO arg0, Vector3 arg1, bool arg2)
+    {
+        InputControl.Player.Disable();
+    }
+
     private void FixedUpdate()
     {
         if (!isHurt && !isAttack && !isSlide)
