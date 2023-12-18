@@ -37,6 +37,12 @@ public class Character : MonoBehaviour
         OnHealthChange?.Invoke(this);
         StartCoroutine(TriggerInvulnerable());
     }
+    
+    public void Resurrect()
+    {
+        currentHealth = maxHealth;
+        OnHealthChange?.Invoke(this);
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -50,6 +56,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (currentHealth == 0) return;
         if (other.CompareTag("Barrier"))
         {
             currentHealth = 0;

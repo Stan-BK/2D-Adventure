@@ -98,6 +98,15 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""856ae5f9-4a5e-4ae3-bba9-720f6e71b229"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -373,6 +382,17 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f019cbc3-cf16-4c91-88af-f882a378dd4a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -968,6 +988,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
         m_Player_Earn = m_Player.FindAction("Earn", throwIfNotFound: true);
         m_Player_NextLevel = m_Player.FindAction("NextLevel", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1049,6 +1070,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sliding;
     private readonly InputAction m_Player_Earn;
     private readonly InputAction m_Player_NextLevel;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
         private @PlayerInputControl m_Wrapper;
@@ -1061,6 +1083,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
         public InputAction @Earn => m_Wrapper.m_Player_Earn;
         public InputAction @NextLevel => m_Wrapper.m_Player_NextLevel;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1094,6 +1117,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @NextLevel.started += instance.OnNextLevel;
             @NextLevel.performed += instance.OnNextLevel;
             @NextLevel.canceled += instance.OnNextLevel;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1122,6 +1148,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @NextLevel.started -= instance.OnNextLevel;
             @NextLevel.performed -= instance.OnNextLevel;
             @NextLevel.canceled -= instance.OnNextLevel;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1312,6 +1341,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         void OnSliding(InputAction.CallbackContext context);
         void OnEarn(InputAction.CallbackContext context);
         void OnNextLevel(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

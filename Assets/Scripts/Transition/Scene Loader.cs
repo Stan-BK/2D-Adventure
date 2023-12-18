@@ -60,15 +60,16 @@ public class SceneLoader : MonoBehaviour
             fadeController.FadeIn();
             yield return new WaitForSeconds(fadeDuration);
         }
-
-        yield return currentScene.sceneReference.UnLoadScene();
         
+        yield return currentScene.sceneReference.UnLoadScene();
+
         LoadScene();
     } 
 
     public void LoadScene()
     {
-        var loadSceneAsync =  Addressables.LoadSceneAsync(nextScene.sceneReference, LoadSceneMode.Additive);
+        currentScene = nextScene;
+        var loadSceneAsync =  currentScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
         loadSceneAsync.Completed += OnLoadSceneCompleted;
     }
 
@@ -80,7 +81,6 @@ public class SceneLoader : MonoBehaviour
         }
         SetCameraBounds?.Invoke();
         Player.transform.position = posToGo;
-        currentScene = nextScene;
         loadedSceneSO.RaiseLoadedSceneEvent(currentScene);
     }
 }

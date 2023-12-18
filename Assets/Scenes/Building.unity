@@ -8382,7 +8382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796857911}
   - component: {fileID: 796857910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bounds
   m_TagString: Bounds
   m_Icon: {fileID: 0}
@@ -11430,7 +11430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
-  sceneType: 0
   nextScene: {fileID: 11400000, guid: 685eb5b7ef2751c45987f2d565a19ed4, type: 2}
   posToGO: {x: -18.36, y: 1.03, z: 0}
 --- !u!4 &1671710519

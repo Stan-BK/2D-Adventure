@@ -1,22 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
     public CharacterEventSO characterEvent;
     public PlayerStateBar playerStateBar;
     public LoadedSceneSO loadedSceneSO;
-    
+    public Menu menuPanel;
+    public Menu gameOverPanel;
+    public PlayerInputControl InputControl;
+
+    private void Awake()
+    {
+        InputControl = new PlayerInputControl();
+    }
+
     private void OnEnable()
     {
+        InputControl.Enable();
+        InputControl.Player.Menu.started += OnShowMenu;
+        
         characterEvent.OnHealthChange += OnHealthChange;
         characterEvent.OnSlideCdChange += OnSlideCdChange;
         loadedSceneSO.OnLoadedScene += OnLoadedScene;
     }
 
+    private void OnShowMenu(InputAction.CallbackContext obj)
+    {
+        menuPanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void OnShowGameOver()
+    {
+        StartCoroutine(ShowGameOver());
+    }
+
+    private IEnumerator ShowGameOver()
+    {
+        yield return new WaitForSeconds(1);
+        gameOverPanel.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+    
     private void OnDisable()
     {
+        InputControl.Disable();
+        
         characterEvent.OnHealthChange -= OnHealthChange;
         characterEvent.OnSlideCdChange -= OnSlideCdChange;
         loadedSceneSO.OnLoadedScene -= OnLoadedScene;

@@ -149,5 +149,10 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         InputControl.Player.Disable();
     }
+
+    public void PlayerResurrect()
+    {
+        isDead = false;
+    }
     #endregion
 }
