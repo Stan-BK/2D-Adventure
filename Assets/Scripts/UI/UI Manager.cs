@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,7 +13,12 @@ public class UIManager : MonoBehaviour
     public Menu menuPanel;
     public Menu gameOverPanel;
     public PlayerInputControl InputControl;
-
+    public AudioManager AudioManager;
+    
+    private Slider bgmSlider;
+    private Slider fxSlider;
+    private bool isMute;
+    
     private void Awake()
     {
         InputControl = new PlayerInputControl();
@@ -76,5 +82,30 @@ public class UIManager : MonoBehaviour
     {
         float percentHealth = (float)character.currentHealth / character.maxHealth;
         playerStateBar.healthChange(percentHealth);
+    }
+
+    public void OnMuteGame()
+    {
+        isMute = !isMute;
+        Debug.Log(isMute);
+        AudioManager.ControlMute(isMute);
+    }
+    
+    public void OnFXVolumeChange(GameObject slider)
+    {
+        if (!fxSlider)
+        {
+            fxSlider = slider.GetComponent<Slider>();
+        }
+        AudioManager.ChangeVolumn(VolumeType.FX, fxSlider.value);
+    }
+
+    public void OnBGMVolumeChange(GameObject slider)
+    {
+        if (!bgmSlider)
+        {
+            bgmSlider = slider.GetComponent<Slider>();
+        }
+        AudioManager.ChangeVolumn(VolumeType.BGM, bgmSlider.value);
     }
 }
