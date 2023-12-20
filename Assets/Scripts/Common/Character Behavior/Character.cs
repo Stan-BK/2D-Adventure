@@ -31,6 +31,11 @@ public class Character : MonoBehaviour
         }
         else
         {
+            var attackComponent = GetComponent<Attack>();
+            if (attackComponent)
+            {
+                Destroy(attackComponent);
+            }
             OnDie?.Invoke();
         }
 
@@ -56,7 +61,6 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (currentHealth == 0) return;
         if (other.CompareTag("Barrier"))
         {
             currentHealth = 0;
