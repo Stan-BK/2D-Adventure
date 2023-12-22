@@ -17,23 +17,28 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 799cd657ae2951a4dbf34ae08015db59
   m_SerializeEntries:
-  - m_GUID: 8c9cfa26abfee488c85f1582747f6a02
-    m_Address: Persistent
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b1385e97b7c0c474cacccfde3207183e
-    m_Address: Building
+  - m_GUID: 8480c4f23e0a9c346841540dad4f7283
+    m_Address: Assets/Scenes/Menu.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 980f16c987a13794fa090cf17d4b679b
-    m_Address: Forest
+    m_Address: Assets/Scenes/Forest.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8480c4f23e0a9c346841540dad4f7283
-    m_Address: Menu
+  - m_GUID: b1385e97b7c0c474cacccfde3207183e
+    m_Address: Assets/Scenes/Building.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 589a813124b173e4fb7365c4f20d4576
+    m_Address: Assets/Scripts/Event/Object/Load Scene SO.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93239568cad2aac438bacfade5e85a7d
+    m_Address: Assets/Scripts/Event/Object/Loaded Scene SO.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

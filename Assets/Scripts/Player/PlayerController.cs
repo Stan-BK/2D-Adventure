@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public LoadSceneSO loadSceneSO;
     public LoadedSceneSO loadedSceneSO;
     public PlayerInputControl InputControl;
     public Rigidbody2D rb;
@@ -54,14 +53,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         InputControl.Enable();
-        loadSceneSO.OnLoadScene += OnLoadScene;
+        LoadSceneSO.Instance.OnLoadScene += OnLoadScene;
         loadedSceneSO.OnLoadedScene += OnLoadedScene;
     }
 
     private void OnDisable()
     {
         InputControl.Disable();
-        loadSceneSO.OnLoadScene -= OnLoadScene;
+        LoadSceneSO.Instance.OnLoadScene -= OnLoadScene;
         loadedSceneSO.OnLoadedScene -= OnLoadedScene;
     }
 

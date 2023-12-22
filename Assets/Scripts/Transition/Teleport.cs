@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour, IInteractive
 {
-    public LoadSceneSO loadSceneSO;
     public GameSceneSO nextScene;
     public Vector3 posToGO;
 
@@ -17,6 +16,6 @@ public class Teleport : MonoBehaviour, IInteractive
 
     void loadScene()
     {
-        loadSceneSO.RaiseLoadSceneEvent(nextScene, posToGO, true);
+        LoadSceneSO.Instance.RaiseLoadSceneEvent(nextScene, posToGO, true);
     }
 }

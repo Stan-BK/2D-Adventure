@@ -7124,7 +7124,7 @@ Tilemap:
       - {fileID: -1501617857, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 2124073332, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 835236286, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -12092,7 +12092,7 @@ Tilemap:
       - {fileID: -689948309, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: -1063337592, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 1284812224, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 36, y: -6, z: 0}
@@ -12301,7 +12301,7 @@ Tilemap:
       - {fileID: 931982883, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: -2140240161, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 452332549, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 34, y: -3, z: 0}
@@ -12411,7 +12411,7 @@ Tilemap:
       - {fileID: -689948309, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: -1063337592, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 1284812224, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 37, y: -2, z: 0}
@@ -19472,7 +19472,7 @@ Tilemap:
       - {fileID: -689948309, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: -1063337592, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
       - {fileID: 1284812224, guid: bfd040d2294a202418f3524ae72b7601, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:

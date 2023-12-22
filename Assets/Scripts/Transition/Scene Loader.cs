@@ -15,7 +15,6 @@ public enum SceneType {
 
 public class SceneLoader : MonoBehaviour
 {
-    public LoadSceneSO loadSceneSO;
     public LoadedSceneSO loadedSceneSO;
     public GameSceneSO firstLoadScene;
     public GameObject Player;
@@ -25,23 +24,25 @@ public class SceneLoader : MonoBehaviour
     
     private GameSceneSO currentScene;
     private GameSceneSO nextScene;
-    private Vector3 posToGo;
+    private Vector3 posToGo = Vector3.zero;
     private bool fadeScreen;
 
     void Awake()
     {
-        currentScene = firstLoadScene;
-        currentScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
+        nextScene = firstLoadScene;
+        LoadScene();
+        // Addressables.LoadSceneAsync(currentScene.sceneReference, LoadSceneMode.Additive);
+        // currentScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
     }
 
     private void OnEnable()
     {
-        loadSceneSO.OnLoadScene += OnLoadScene;
+        LoadSceneSO.Instance.OnLoadScene += OnLoadScene;
     }
 
     private void OnDisable()
     {
-        loadSceneSO.OnLoadScene -= OnLoadScene;
+        LoadSceneSO.Instance.OnLoadScene -= OnLoadScene;
     }
 
     private void OnLoadScene(GameSceneSO arg0, Vector3 arg1, bool arg2)
@@ -80,7 +81,8 @@ public class SceneLoader : MonoBehaviour
             fadeController.FadeOut();
         }
         SetCameraBounds?.Invoke();
-        Player.transform.position = posToGo;
+        if (posToGo != Vector3.zero)
+            Player.transform.position = posToGo;
         loadedSceneSO.RaiseLoadedSceneEvent(currentScene);
     }
 }
