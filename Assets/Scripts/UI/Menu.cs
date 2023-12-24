@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     public GameSceneSO firstScene;
     public Vector3 posToGo;
     public UnityEvent ReplayGame;
+    public LoadSceneSO loadSceneSO;
     public LoadedSceneSO loadedSceneSO;
     public bool isReload = false;
 
@@ -42,7 +43,7 @@ public class Menu : MonoBehaviour
     {
         if (isReload) return;
         isReload = true;
-        LoadSceneSO.Instance.RaiseLoadSceneEvent(firstScene, posToGo, true);
+        loadSceneSO.RaiseLoadSceneEvent(firstScene, posToGo, true);
         Time.timeScale = 1; 
     }
 

@@ -15,6 +15,7 @@ public enum SceneType {
 
 public class SceneLoader : MonoBehaviour
 {
+    public LoadSceneSO loadSceneSO;
     public LoadedSceneSO loadedSceneSO;
     public GameSceneSO firstLoadScene;
     public GameObject Player;
@@ -37,12 +38,12 @@ public class SceneLoader : MonoBehaviour
 
     private void OnEnable()
     {
-        LoadSceneSO.Instance.OnLoadScene += OnLoadScene;
+        loadSceneSO.OnLoadScene += OnLoadScene;
     }
 
     private void OnDisable()
     {
-        LoadSceneSO.Instance.OnLoadScene -= OnLoadScene;
+        loadSceneSO.OnLoadScene -= OnLoadScene;
     }
 
     private void OnLoadScene(GameSceneSO arg0, Vector3 arg1, bool arg2)
