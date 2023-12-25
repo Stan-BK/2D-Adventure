@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0268e13b3f8add40ad3b6443f70e251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: {fileID: 0}
+  firstScene: {fileID: 11400000, guid: 4463e54a13d99904a944ca0a3728366d, type: 2}
   posToGo: {x: -6.75, y: 0.98, z: 0}
   ReplayGame:
     m_PersistentCalls:
