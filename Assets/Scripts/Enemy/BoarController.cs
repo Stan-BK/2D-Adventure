@@ -12,10 +12,6 @@ public class BoarController : Enemy
         chaseState = new BoarChaseState();
         anim.SetBool("walk", true);
     }
-    public override void Move()
-    {
-        base.Move();
-    }
     public void changeFaceDirWhenPatroling()
     {
         if (!physicsCheck.isGround || (physicsCheck.touchLeftWall && faceDir < 0) || (physicsCheck.touchRightWall && faceDir > 0))
@@ -41,5 +37,11 @@ public class BoarController : Enemy
         faceDir = -faceDir;
         canMove = true;
         anim.SetBool("walk", true);
+    }
+
+    public override void GetHurt()
+    {
+        base.GetHurt();
+        SwitchState(NPCState.Chase);
     }
 }

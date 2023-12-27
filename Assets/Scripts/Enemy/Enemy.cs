@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     #endregion
     
     #region 事件函数
-    public void GetHurt()
+    public virtual void GetHurt()
     {
         anim.SetTrigger("hurt");
         canMove = false;

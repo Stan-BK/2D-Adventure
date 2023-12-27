@@ -13,6 +13,7 @@ public class SnailDefendState : BaseState
         currentEnemy.anim.SetBool("walk", false);
         currentEnemy.anim.SetBool("defend", true);
         currentEnemy.Defend();
+        timer = currentEnemy.lostTime;
     }
 
     public override void LogicUpdate()

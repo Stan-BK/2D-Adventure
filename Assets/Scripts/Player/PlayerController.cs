@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 受伤/攻击/滑行过程无法默认移动
         if (!isHurt && !isAttack && !isSlide)
             PlayerMove();
         else if (isAttack)
@@ -104,7 +105,8 @@ public class PlayerController : MonoBehaviour
     
     void PlayerAttack(InputAction.CallbackContext cbc)
     {
-        if (!isGroundCheck.isGround) return;
+        // 跳跃或受伤时无法攻击
+        if (!isGroundCheck.isGround || isHurt) return;
         playerAnimation.PlayerAttack();
         isAttack = true;
     }

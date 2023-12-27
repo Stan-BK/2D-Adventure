@@ -42,4 +42,10 @@ public class SnailController : Enemy
     {
         character.invulnerable = false;
     }
+
+    public override void GetHurt()
+    {
+        base.GetHurt();
+        SwitchState(NPCState.Defend);
+    }
 }
