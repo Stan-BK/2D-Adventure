@@ -5,6 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+enum JumpTouchState
+{
+    Left,
+    Right,
+    None
+}
+
 public class PlayerController : MonoBehaviour
 {
     public LoadSceneSO loadSceneSO;
@@ -12,9 +19,10 @@ public class PlayerController : MonoBehaviour
     public PlayerInputControl InputControl;
     public Rigidbody2D rb;
     private PlayerAnimation playerAnimation;
-    private PhysicsCheck isGroundCheck;
+    private PhysicsCheck physicsCheck;
     public PhysicsMaterial2D friction;
     public PhysicsMaterial2D noFriction;
+    public PhysicsMaterial2D climb;
     public CharacterEventSO characterEventSO;
     
     [Header("角色行为属性")]
@@ -28,16 +36,18 @@ public class PlayerController : MonoBehaviour
     public bool isAttack = false;
     public bool isSlide = false;
     public float slideCD;
-    
+
+    private bool canJump = true;
     private bool canSlide = true;
+    private JumpTouchState _jumpTouchState = JumpTouchState.None;
 
     #region 生命周期函数
     private void Awake()
     {
-        isGroundCheck = GetComponent<PhysicsCheck>();
+        physicsCheck = GetComponent<PhysicsCheck>();
         InputControl = new PlayerInputControl();
         playerAnimation = GetComponent<PlayerAnimation>();
-        isGroundCheck = GetComponent<PhysicsCheck>();
+        physicsCheck = GetComponent<PhysicsCheck>();
 
         InputControl.Player.Jump.started += PlayerJump;
         InputControl.Player.Attack.started += PlayerAttack;
@@ -99,21 +109,45 @@ public class PlayerController : MonoBehaviour
 
     void PlayerJump(InputAction.CallbackContext cbc)
     {
-        if (isGroundCheck.isGround)
+        bool isLeft = physicsCheck.touchLeftWall;
+        bool isRight = physicsCheck.touchRightWall;
+        var currentJumpState = isLeft ? JumpTouchState.Left :
+            isRight ? JumpTouchState.Right : JumpTouchState.None;
+        
+        if (currentJumpState != JumpTouchState.None && currentJumpState != _jumpTouchState)
+        {
+            canJump = true;
+            _jumpTouchState = currentJumpState;
+        }
+        else
+        {
+            canJump = false;
+        }
+
+        if (physicsCheck.isGround)
+        {
+            _jumpTouchState = currentJumpState;
+            canJump = true;
+        }
+        
+        if (canJump)
+        {
+            rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, 0);
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
     
     void PlayerAttack(InputAction.CallbackContext cbc)
     {
         // 跳跃或受伤时无法攻击
-        if (!isGroundCheck.isGround || isHurt) return;
+        if (!physicsCheck.isGround || isHurt) return;
         playerAnimation.PlayerAttack();
         isAttack = true;
     }
 
     void PlayerSliding(InputAction.CallbackContext cbc)
     {
-        if (isSlide || !canSlide || !isGroundCheck.isGround) return;
+        if (isSlide || !canSlide || !physicsCheck.isGround) return;
         isAttack = false;
         isSlide = true;
         playerAnimation.PlayerSlide();
@@ -126,7 +160,18 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAnimateMaterial()
     {
-        rb.sharedMaterial = isGroundCheck.isGround ? friction : noFriction;
+        var x = inputDirection.x;
+        bool isClimb = false;
+        if (physicsCheck.touchLeftWall && x < 0)
+        {
+            inputDirection.x = -0.3F;
+            isClimb = true;
+        } else if (physicsCheck.touchRightWall && x > 0)
+        {
+            inputDirection.x = 0.3F;
+            isClimb = true;
+        }
+        rb.sharedMaterial = physicsCheck.isGround ? friction : isClimb ? climb : noFriction;
     }
 
     IEnumerator PlayerCanSlide()

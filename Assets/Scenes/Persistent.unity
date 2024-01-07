@@ -3266,7 +3266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
   loadedSceneSO: {fileID: 11400000, guid: 93239568cad2aac438bacfade5e85a7d, type: 2}
-  firstLoadScene: {fileID: 11400000, guid: 4463e54a13d99904a944ca0a3728366d, type: 2}
+  firstLoadScene: {fileID: 11400000, guid: e14b155def9b88f4fbc6f6c4bc949fa5, type: 2}
   Player: {fileID: 1868554331}
   fadeDuration: 1
   SetCameraBounds:
@@ -5275,7 +5275,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 3f35e066b86be59438b920e8219e0b95, type: 2}
   m_IncludeLayers:
@@ -5340,6 +5340,7 @@ MonoBehaviour:
   rb: {fileID: 1868554334}
   friction: {fileID: 6200000, guid: 4a84698433f1b6142baf660fcd611842, type: 2}
   noFriction: {fileID: 6200000, guid: 3f35e066b86be59438b920e8219e0b95, type: 2}
+  climb: {fileID: 6200000, guid: ceabd741792bb354997f3ce5529c8a02, type: 2}
   characterEventSO: {fileID: 11400000, guid: bebfc258cdfeea64cad83d3c65fb6f87, type: 2}
   inputDirection: {x: 0, y: 0}
   jumpForce: 18

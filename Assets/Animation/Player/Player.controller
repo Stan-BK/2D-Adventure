@@ -114,6 +114,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -8235018820569526204}
     m_Position: {x: 30, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1980553232539061121}
+    m_Position: {x: 65, y: 245, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -1777196401462301363}
@@ -527,6 +530,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7680983647e13f84bafde45571e14e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1102 &-1980553232539061121
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BlueClimb
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: d62af0d7bc3a1094ba5384ed833eb645, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-1862123529022907452
 AnimatorState:
   serializedVersion: 6
