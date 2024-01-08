@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b582b73a3b92744a4fe9262461b4b1, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
+  sceneName: 2
   sceneReference:
     m_AssetGUID: 980f16c987a13794fa090cf17d4b679b
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  sceneType: 0

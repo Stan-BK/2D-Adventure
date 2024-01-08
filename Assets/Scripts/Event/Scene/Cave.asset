@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b582b73a3b92744a4fe9262461b4b1, type: 3}
   m_Name: Cave
   m_EditorClassIdentifier: 
+  sceneName: 1
   sceneReference:
     m_AssetGUID: cffd7c247ac736d44a22f5a312cfdf4f
     m_SubObjectName: 

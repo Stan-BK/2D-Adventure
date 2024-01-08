@@ -13,6 +13,14 @@ public enum SceneType {
     Menu
 }
 
+public enum SceneName
+{
+    Building,
+    Cave,
+    Forest,
+    Menu
+}
+
 public class SceneLoader : MonoBehaviour
 {
     public LoadSceneSO loadSceneSO;
@@ -21,6 +29,7 @@ public class SceneLoader : MonoBehaviour
     public GameObject Player;
     public float fadeDuration;  
     public UnityEvent SetCameraBounds;
+    public UnityEvent FirstSceneReset;
     public FadeControl fadeController;
     
     private GameSceneSO currentScene;
@@ -52,6 +61,11 @@ public class SceneLoader : MonoBehaviour
         posToGo = arg1;
         fadeScreen = arg2;
 
+        if (arg0.sceneName == SceneName.Menu)
+        {
+            FirstSceneReset?.Invoke();
+        }
+        
         StartCoroutine(UnLoadPreviousScene());
     }
 

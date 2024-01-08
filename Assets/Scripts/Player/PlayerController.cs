@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 enum JumpTouchState
 {
@@ -12,7 +14,7 @@ enum JumpTouchState
     None
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>, PropsCallback
 {
     public LoadSceneSO loadSceneSO;
     public LoadedSceneSO loadedSceneSO;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public PhysicsMaterial2D noFriction;
     public PhysicsMaterial2D climb;
     public CharacterEventSO characterEventSO;
+    public Light2D Light;
     
     [Header("角色行为属性")]
     public Vector2 inputDirection;
@@ -36,14 +39,16 @@ public class PlayerController : MonoBehaviour
     public bool isAttack = false;
     public bool isSlide = false;
     public float slideCD;
-
+    [Tooltip("角色装备")] public List<PropSO> props;
+    
     private bool canJump = true;
     private bool canSlide = true;
     private JumpTouchState _jumpTouchState = JumpTouchState.None;
 
     #region 生命周期函数
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         physicsCheck = GetComponent<PhysicsCheck>();
         InputControl = new PlayerInputControl();
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -78,6 +83,11 @@ public class PlayerController : MonoBehaviour
     private void OnLoadedScene(GameSceneSO sceneSO)
     {
         InputControl.Player.Enable();
+        // DealWithLight(sceneSO);
+        if (sceneSO.sceneName == SceneName.Menu)
+        {
+            RemoveProps();
+        }
     }
 
     private void OnLoadScene(GameSceneSO arg0, Vector3 arg1, bool arg2)
@@ -200,6 +210,55 @@ public class PlayerController : MonoBehaviour
     public void PlayerResurrect()
     {
         isDead = false;
+    }
+
+    private void TurnOnLight()
+    {
+        Light.intensity = 1;
+        Light.pointLightOuterRadius = 4;
+        Light.gameObject.SetActive(true);
+    }
+
+    private void TurnOffLight()
+    {
+        Light.gameObject.SetActive(false);
+    }
+    #endregion
+
+    // private void DealWithLight(GameSceneSO sceneSO)
+    // {
+    //     if (sceneSO.sceneName == SceneName.Cave)
+    //     {
+    //         TurnOnLight();
+    //     }
+    //     else
+    //     {
+    //         TurnOffLight();
+    //     }
+    // }
+
+    public void RemoveProps()
+    {
+        foreach (var prop in props)
+        {
+            prop.RemoveProp();
+        }
+        props.Clear();
+    }
+
+    #region 装备
+
+    public void GetFlashLight(PropSO prop)
+    {
+        props.Add(prop);
+        Light.intensity = 4;
+        Light.pointLightOuterRadius = 10;
+    }
+
+    public void RemoveFlashLight()
+    {
+        Light.intensity = 1;
+        Light.pointLightOuterRadius = 4;
     }
     #endregion
 }
