@@ -6,7 +6,9 @@
     <type fullname="CameraEventSo" preserve="all" />
     <type fullname="Character" preserve="all" />
     <type fullname="Chest" preserve="all" />
+    <type fullname="EndGameTeleport" preserve="all" />
     <type fullname="EnemyDead" preserve="all" />
+    <type fullname="FlashLightSO" preserve="all" />
     <type fullname="GameSceneSO" preserve="all" />
     <type fullname="LoadedSceneSO" preserve="all" />
     <type fullname="LoadSceneSO" preserve="all" />
