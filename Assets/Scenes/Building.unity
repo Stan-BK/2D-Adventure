@@ -11821,8 +11821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadSceneSO: {fileID: 11400000, guid: 589a813124b173e4fb7365c4f20d4576, type: 2}
-  nextScene: {fileID: 11400000, guid: 4463e54a13d99904a944ca0a3728366d, type: 2}
-  posToGO: {x: -6.75, y: 0.98, z: 0}
+  nextScene: {fileID: 11400000, guid: e14b155def9b88f4fbc6f6c4bc949fa5, type: 2}
+  posToGO: {x: 2.85, y: 3.05, z: 0}
 --- !u!4 &1671710519
 Transform:
   m_ObjectHideFlags: 0

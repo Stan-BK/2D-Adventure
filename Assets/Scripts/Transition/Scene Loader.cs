@@ -31,10 +31,10 @@ public class SceneLoader : MonoBehaviour
     public UnityEvent SetCameraBounds;
     public UnityEvent FirstSceneReset;
     public FadeControl fadeController;
+    public Vector3 posToGo;
     
     private GameSceneSO currentScene;
     private GameSceneSO nextScene;
-    private Vector3 posToGo = Vector3.zero;
     private bool fadeScreen;
 
     void Awake()
