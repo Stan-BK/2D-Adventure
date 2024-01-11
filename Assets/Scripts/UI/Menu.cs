@@ -51,6 +51,8 @@ public class Menu : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+        Application.ExternalEval("window.close()");
 #endif
         Application.Quit();
     }
