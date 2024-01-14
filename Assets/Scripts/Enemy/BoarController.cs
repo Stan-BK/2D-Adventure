@@ -26,15 +26,13 @@ public class BoarController : Enemy
     {
         if (!physicsCheck.isGround || (physicsCheck.touchLeftWall && faceDir < 0) || (physicsCheck.touchRightWall && faceDir > 0))
         {
-            transform.localScale = new Vector3(-faceDir, 1, 1);
-            faceDir = -faceDir;
+            ChangeFaceDir();
         }
     }
     
     void WaitForWalk()
     {
-        transform.localScale = new Vector3(-faceDir, 1, 1);
-        faceDir = -faceDir;
+        ChangeFaceDir();
         canMove = true;
         anim.SetBool("walk", true);
     }

@@ -26,8 +26,7 @@ public class SnailController : Enemy
     
     void WaitForWalk()
     {
-        transform.localScale = new Vector3(-faceDir, 1, 1);
-        faceDir = -faceDir;
+        ChangeFaceDir();
         canMove = true;
         anim.SetBool("walk", true);
     }

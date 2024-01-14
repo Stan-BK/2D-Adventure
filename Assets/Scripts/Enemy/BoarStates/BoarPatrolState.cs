@@ -8,7 +8,6 @@ public class BoarPatrolState : BaseState
     public override void OnEnter(Enemy enemy)
     {
         currentEnemy = (BoarController)enemy;
-        currentEnemy.faceDir = enemy.transform.localScale.x;
         currentEnemy.speed = currentEnemy.patrolSpeed;
     }
 

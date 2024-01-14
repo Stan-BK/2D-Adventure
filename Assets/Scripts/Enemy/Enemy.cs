@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 {
     protected Rigidbody2D rb;
     public PhysicsCheck physicsCheck;
+    protected Vector3 localScale;
 
     [Header("敌人行为")]
     public float speed;
@@ -42,6 +43,8 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         physicsCheck = GetComponent<PhysicsCheck>();
+        localScale = transform.localScale;
+        faceDir = localScale.x;
     }
 
     protected void OnEnable()
@@ -76,7 +79,7 @@ public class Enemy : MonoBehaviour
         rb.velocity = new Vector2(speed * faceDir * Time.deltaTime, 0);
     }
 
-    void StopMove()
+    public void StopMove()
     {
         rb.velocity = new Vector2(0, 0);
     }
@@ -85,10 +88,15 @@ public class Enemy : MonoBehaviour
     {
         return Physics2D.BoxCast(transform.position + (Vector3)centerOffset, checkSize, 0, new Vector2(transform.localScale.x, 0), checkDistance, attackLayer);
     }
+
+    public void ChangeFaceDir()
+    {
+        faceDir = -faceDir;
+        transform.localScale = new Vector3(faceDir, localScale.y, localScale.z);
+    }
     #endregion
     
     #region 状态管理
-
     public void SwitchState(NPCState state)
     {
         var s = state switch
@@ -113,7 +121,7 @@ public class Enemy : MonoBehaviour
         StopMove();
     }
 
-    public void EnemyDead()
+    public virtual void EnemyDead()
     {
         canMove = false;
         anim.SetTrigger("dead");
