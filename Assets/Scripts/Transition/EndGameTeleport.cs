@@ -11,5 +11,7 @@ public class EndGameTeleport : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         loadSceneSO.RaiseLoadSceneEvent(nextScene, posToGO, true);
+        PlayerController.Instance.GetComponent<Character>().Resurrect();
+        PlayerController.Instance.GetComponent<PlayerController>().PlayerResurrect();
     }
 }

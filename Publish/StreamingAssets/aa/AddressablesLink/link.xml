@@ -2,6 +2,8 @@
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Attack" preserve="all" />
     <type fullname="AudioEventSO" preserve="all" />
+    <type fullname="BeeController" preserve="all" />
+    <type fullname="BeeFinishAttackAnimation" preserve="all" />
     <type fullname="BoarController" preserve="all" />
     <type fullname="CameraEventSo" preserve="all" />
     <type fullname="Character" preserve="all" />
@@ -83,6 +85,7 @@
     <type fullname="UnityEngine.CapsuleCollider2D" preserve="all" />
     <type fullname="UnityEngine.CircleCollider2D" preserve="all" />
     <type fullname="UnityEngine.CompositeCollider2D" preserve="all" />
+    <type fullname="UnityEngine.PhysicsMaterial2D" preserve="all" />
     <type fullname="UnityEngine.PolygonCollider2D" preserve="all" />
     <type fullname="UnityEngine.Rigidbody2D" preserve="all" />
   </assembly>
