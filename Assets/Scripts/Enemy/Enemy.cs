@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public bool canMove = true;
     public bool isDead = false;
+    public GameObject deadParticle;
 
     [Header("追击检测")]
     public Vector2 centerOffset;
@@ -71,6 +72,13 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy()
+    {
+        var particle = Instantiate(deadParticle);
+        particle.transform.position = transform.position;
+    }
+
     #endregion
 
     #region 敌人行为
