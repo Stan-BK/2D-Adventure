@@ -1148,10 +1148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41be1a5186316f04cb277c1f04b1fa76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAudioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
+  PlayerAudioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
   bgmAudioEventSO: {fileID: 11400000, guid: 0e48ae4293e67a34da80fdb128686790, type: 2}
   openchestAudioEventSO: {fileID: 11400000, guid: 755b9be7f73eb9d42881f5e0961c0a3b, type: 2}
-  attackAudioSource: {fileID: 416500427}
+  playerAudioSource: {fileID: 416500427}
   bgmAudioSource: {fileID: 416500431}
   openchestAudioSource: {fileID: 416500432}
   MuteSnapshot: {fileID: 24500006, guid: 38040e27d9c66d14cbe2a48f0f4909e3, type: 2}
@@ -1166,7 +1166,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2040979134812306018, guid: 38040e27d9c66d14cbe2a48f0f4909e3, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 25b665db784af554c812bacf00e3f52f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1555,6 +1555,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
   audioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
   playOnEnable: 1
+  isLoop: 0
 --- !u!114 &478471180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,6 +2063,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
   audioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
   playOnEnable: 1
+  isLoop: 0
 --- !u!114 &705467172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2176,6 +2178,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   audioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
   playOnEnable: 1
+  isLoop: 0
 --- !u!114 &707238495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,6 +5387,7 @@ GameObject:
   - component: {fileID: 1868554345}
   - component: {fileID: 1868554341}
   - component: {fileID: 1868554344}
+  - component: {fileID: 1868554348}
   m_Layer: 7
   m_Name: ///Player
   m_TagString: Player
@@ -5440,6 +5444,8 @@ MonoBehaviour:
   isSlide: 0
   slideCD: 1
   props: []
+  FootAudio: {fileID: 8300000, guid: 7f6b533bd7154084abdc00303b5e79ae, type: 3}
+  SwooshAudio: {fileID: 8300000, guid: 2532d7b4e43610e4f88b80e095cbe2f1, type: 3}
 --- !u!114 &1868554341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5717,6 +5723,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1868554348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868554331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1014848474aef439b979f4f9aaceee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 0}
+  audioEventSO: {fileID: 11400000, guid: 83c43a4779f0ac7489ebb8c9568d483e, type: 2}
+  playOnEnable: 0
+  isLoop: 0
 --- !u!1 &1895318580
 GameObject:
   m_ObjectHideFlags: 0
@@ -6371,6 +6393,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
   audioEventSO: {fileID: 11400000, guid: 0e48ae4293e67a34da80fdb128686790, type: 2}
   playOnEnable: 1
+  isLoop: 0
 --- !u!1 &2047565416
 GameObject:
   m_ObjectHideFlags: 0

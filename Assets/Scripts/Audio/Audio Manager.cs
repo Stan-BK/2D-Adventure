@@ -12,11 +12,11 @@ public enum VolumeType
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioEventSO attackAudioEventSO;
+    public AudioEventSO PlayerAudioEventSO;
     public AudioEventSO bgmAudioEventSO;
     public AudioEventSO openchestAudioEventSO;
     
-    public AudioSource attackAudioSource;
+    public AudioSource playerAudioSource;
     public AudioSource bgmAudioSource;
     public AudioSource openchestAudioSource;
     public AudioMixerSnapshot MuteSnapshot;
@@ -24,34 +24,44 @@ public class AudioManager : MonoBehaviour
     
     private void OnEnable()
     {
-        attackAudioEventSO.OnEventRaised += OnAudioTrigger;
+        PlayerAudioEventSO.OnEventRaised += OnAudioTrigger;
         bgmAudioEventSO.OnEventRaised += OnBGMTrigger;
         openchestAudioEventSO.OnEventRaised += OnOpenchestTrigger;
+
+        PlayerAudioEventSO.OnPauseEventRaised += OnAudioPause;
     }
 
     private void OnDisable()
     {
-        attackAudioEventSO.OnEventRaised -= OnAudioTrigger;
+        PlayerAudioEventSO.OnEventRaised -= OnAudioTrigger;
         bgmAudioEventSO.OnEventRaised -= OnBGMTrigger;
         openchestAudioEventSO.OnEventRaised -= OnOpenchestTrigger;
+        
+        PlayerAudioEventSO.OnPauseEventRaised -= OnAudioPause;
     }
 
-    private void OnOpenchestTrigger(AudioClip audioClip)
+    private void OnAudioPause()
+    {
+        playerAudioSource.Pause();
+    }
+
+    private void OnOpenchestTrigger(AudioClip audioClip, bool isLoop)
     {
         openchestAudioSource.clip = audioClip;
         openchestAudioSource.Play();
     }
 
-    private void OnBGMTrigger(AudioClip audioClip)
+    private void OnBGMTrigger(AudioClip audioClip, bool isLoop)
     {
         bgmAudioSource.clip = audioClip;
         bgmAudioSource.Play();
     }
 
-    private void OnAudioTrigger(AudioClip audioClip)
+    private void OnAudioTrigger(AudioClip audioClip, bool isLoop)
     {
-        attackAudioSource.clip = audioClip;
-        attackAudioSource.Play();
+        playerAudioSource.clip = audioClip;
+        playerAudioSource.loop = isLoop;
+        playerAudioSource.Play();
     }
 
     public void ChangeVolumn(VolumeType type, float val)
@@ -60,7 +70,7 @@ public class AudioManager : MonoBehaviour
         {
             case VolumeType.FX:
             {
-                attackAudioSource.volume = val;
+                playerAudioSource.volume = val;
                 openchestAudioSource.volume = val;
             }
                 break;

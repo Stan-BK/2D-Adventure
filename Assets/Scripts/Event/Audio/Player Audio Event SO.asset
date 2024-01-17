@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca070717f61268545a0b8f57ad9f0ea1, type: 3}
-  m_Name: Attack Audio Event SO
+  m_Name: Player Audio Event SO
   m_EditorClassIdentifier: 

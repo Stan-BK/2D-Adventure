@@ -40,10 +40,17 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
     public bool isSlide = false;
     public float slideCD;
     [Tooltip("角色装备")] public List<PropSO> props;
+
+    [Header("角色音效")] 
+    public AudioClip FootAudio;
+    public AudioClip SwooshAudio;
+    
     
     private bool canJump = true;
     private bool canSlide = true;
+    private bool isWalking = false;
     private JumpTouchState _jumpTouchState = JumpTouchState.None;
+    private AudioTrigger AudioTrigger;
 
     #region 生命周期函数
     protected override void Awake()
@@ -53,6 +60,7 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
         InputControl = new PlayerInputControl();
         playerAnimation = GetComponent<PlayerAnimation>();
         physicsCheck = GetComponent<PhysicsCheck>();
+        AudioTrigger = GetComponent<AudioTrigger>();
 
         InputControl.Player.Jump.started += PlayerJump;
         InputControl.Player.Attack.started += PlayerAttack;
@@ -114,6 +122,21 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
         if (rb.velocity.x != 0)
         {
             transform.localScale = new Vector3(rb.velocity.x > 0 ? 1 : -1, 1, 1);
+            if (physicsCheck.isGround && !isWalking && !isSlide)
+            {
+                AudioTrigger.playAudio(FootAudio, true);
+                isWalking = true;
+            }
+            else if (!physicsCheck.isGround || isSlide)
+            {
+                isWalking = false;
+                AudioTrigger.pauseAudio();
+            }
+        }
+        else
+        {
+            isWalking = false;
+            AudioTrigger.pauseAudio();
         }
     }
 
@@ -142,6 +165,7 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
         
         if (canJump)
         {
+            isWalking = false;
             rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, 0);
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -158,6 +182,8 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
     void PlayerSliding(InputAction.CallbackContext cbc)
     {
         if (isSlide || !canSlide || !physicsCheck.isGround) return;
+        AudioTrigger.playAudio(SwooshAudio, false);
+        isWalking = false;
         isAttack = false;
         isSlide = true;
         playerAnimation.PlayerSlide();
