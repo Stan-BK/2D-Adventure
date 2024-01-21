@@ -60,11 +60,6 @@ public class SceneLoader : MonoBehaviour
         nextScene = arg0;
         posToGo = arg1;
         fadeScreen = arg2;
-
-        if (arg0.sceneName == SceneName.Menu)
-        {
-            FirstSceneReset?.Invoke();
-        }
         
         StartCoroutine(UnLoadPreviousScene());
     }
@@ -99,5 +94,10 @@ public class SceneLoader : MonoBehaviour
         if (posToGo != Vector3.zero)
             Player.transform.position = posToGo;
         loadedSceneSO.RaiseLoadedSceneEvent(currentScene);
+
+        if (currentScene.sceneName == SceneName.Menu)
+        {
+            FirstSceneReset?.Invoke();
+        }
     }
 }

@@ -107,6 +107,15 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f7ae84c-bd61-4ede-9629-8e72020ee43f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -393,6 +402,17 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ea20a75-f161-4dce-a214-c3fa234ab14e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,6 +1009,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         m_Player_Earn = m_Player.FindAction("Earn", throwIfNotFound: true);
         m_Player_NextLevel = m_Player.FindAction("NextLevel", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_Dialog = m_Player.FindAction("Dialog", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1071,6 +1092,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Earn;
     private readonly InputAction m_Player_NextLevel;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_Dialog;
     public struct PlayerActions
     {
         private @PlayerInputControl m_Wrapper;
@@ -1084,6 +1106,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         public InputAction @Earn => m_Wrapper.m_Player_Earn;
         public InputAction @NextLevel => m_Wrapper.m_Player_NextLevel;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @Dialog => m_Wrapper.m_Player_Dialog;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1120,6 +1143,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
+            @Dialog.started += instance.OnDialog;
+            @Dialog.performed += instance.OnDialog;
+            @Dialog.canceled += instance.OnDialog;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1151,6 +1177,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
+            @Dialog.started -= instance.OnDialog;
+            @Dialog.performed -= instance.OnDialog;
+            @Dialog.canceled -= instance.OnDialog;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1342,6 +1371,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         void OnEarn(InputAction.CallbackContext context);
         void OnNextLevel(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnDialog(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
