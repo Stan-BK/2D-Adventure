@@ -6139,7 +6139,6 @@ MonoBehaviour:
   noFriction: {fileID: 6200000, guid: 3f35e066b86be59438b920e8219e0b95, type: 2}
   climb: {fileID: 6200000, guid: ceabd741792bb354997f3ce5529c8a02, type: 2}
   characterEventSO: {fileID: 11400000, guid: bebfc258cdfeea64cad83d3c65fb6f87, type: 2}
-  Light: {fileID: 370413631}
   inputDirection: {x: 0, y: 0}
   jumpForce: 18
   speed: 200
@@ -6150,9 +6149,9 @@ MonoBehaviour:
   isAttack: 0
   isSlide: 0
   slideCD: 1
-  props: []
   FootAudio: {fileID: 8300000, guid: 7f6b533bd7154084abdc00303b5e79ae, type: 3}
   SwooshAudio: {fileID: 8300000, guid: 2532d7b4e43610e4f88b80e095cbe2f1, type: 3}
+  light: {fileID: 370413631}
 --- !u!114 &1868554341
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,11 +7,11 @@ public class FlashLightSO : PropSO
 {
     public override void AddProp()
     {
-        PlayerController.Instance.GetFlashLight(this);
+        (PlayerController.Instance as PropsCallback).GetFlashLight(this);
     }
 
     public override void RemoveProp()
     {
-        PlayerController.Instance.RemoveFlashLight();
+        (PlayerController.Instance as PropsCallback).RemoveFlashLight();
     }
 }

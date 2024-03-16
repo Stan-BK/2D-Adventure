@@ -26,7 +26,6 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
     public PhysicsMaterial2D noFriction;
     public PhysicsMaterial2D climb;
     public CharacterEventSO characterEventSO;
-    public Light2D Light;
     
     [Header("角色行为属性")]
     public Vector2 inputDirection;
@@ -39,7 +38,6 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
     public bool isAttack = false;
     public bool isSlide = false;
     public float slideCD;
-    [Tooltip("角色装备")] public List<PropSO> props;
 
     [Header("角色音效")] 
     public AudioClip FootAudio;
@@ -51,6 +49,13 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
     private bool isWalking = false;
     private JumpTouchState _jumpTouchState = JumpTouchState.None;
     private AudioTrigger AudioTrigger;
+
+    public List<PropSO> props { get; set; }
+    public Light2D light;
+    public Light2D Light
+    {
+        get => light;
+    }
 
     #region 生命周期函数
     protected override void Awake()
@@ -65,6 +70,8 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
         InputControl.Player.Jump.started += PlayerJump;
         InputControl.Player.Attack.started += PlayerAttack;
         InputControl.Player.Sliding.started += PlayerSliding;
+
+        props = new List<PropSO>();
     }
 
     // Update is called once per frame
@@ -240,6 +247,7 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
 
     private void TurnOnLight()
     {
+        Light2D Light = (this as PropsCallback).Light;
         Light.intensity = 1;
         Light.pointLightOuterRadius = 4;
         Light.gameObject.SetActive(true);
@@ -247,6 +255,7 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
 
     private void TurnOffLight()
     {
+        Light2D Light = (this as PropsCallback).Light;
         Light.gameObject.SetActive(false);
     }
     #endregion
@@ -265,26 +274,11 @@ public class PlayerController : Singleton<PlayerController>, PropsCallback
 
     public void RemoveProps()
     {
+        List<PropSO> props = (this as PropsCallback).props;
         foreach (var prop in props)
         {
             prop.RemoveProp();
         }
         props.Clear();
     }
-
-    #region 装备
-
-    public void GetFlashLight(PropSO prop)
-    {
-        props.Add(prop);
-        Light.intensity = 4;
-        Light.pointLightOuterRadius = 10;
-    }
-
-    public void RemoveFlashLight()
-    {
-        Light.intensity = 1;
-        Light.pointLightOuterRadius = 4;
-    }
-    #endregion
 }

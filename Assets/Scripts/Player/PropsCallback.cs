@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using Player.Props;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
 namespace Player
 {
-    public interface PropsCallback
+    public interface PropsCallback: IFlashLight
     {
-        public void GetFlashLight(PropSO prop);
-        public void RemoveFlashLight();
     }
 }
