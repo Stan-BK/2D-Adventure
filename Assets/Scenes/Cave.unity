@@ -175,6 +175,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1079404858, guid: 743e9a83d781cae4bb0424f0a73b7108, type: 3}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7810276496894785119, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
       propertyPath: m_Name
       value: Bee (1)
@@ -8905,6 +8921,22 @@ PrefabInstance:
     - target: {fileID: 7810276496894785112, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1079404858, guid: 743e9a83d781cae4bb0424f0a73b7108, type: 3}
+    - target: {fileID: 7810276496894785115, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7810276496894785119, guid: 2cdc8c3d2c5af9b4abb1a9449337b65f, type: 3}
       propertyPath: m_Name
